@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marco Grancelli · Folclore sudamericano, voz y guitarra</title>
+<meta name="description" content="Marco Grancelli, cantor y guitarrista argentino radicado en Toulouse. Folclore sudamericano y canciones propias. Concierto solo o en dúo. Disco: Camino Trunco.">
+<meta property="og:title" content="Marco Grancelli · Folclore sudamericano">
+<meta property="og:description" content="Cantor y guitarrista argentino radicado en Toulouse. Concierto solo o en dúo. Disco: Camino Trunco.">
+<meta property="og:image" content="fotos/marco-guitarra-azul.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;1,400;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!--
+  CÓMO CAMBIAR LOS TEXTOS
+  - El castellano está escrito acá abajo, en la página. El francés y el inglés están al final,
+    en la lista «TEXTOS» (cada renglón: clave, francés, inglés). La clave es la que figura en data-t="…".
+  - Las fotos están en la carpeta «fotos» de al lado. Para cambiar una, reemplazar el archivo con el mismo nombre.
+  - Los videos: cambiar el código de YouTube en data-yt="…".
+-->
+<style>
+  :root {
+    --azul: #14406b; --azul-hondo: #0a2239; --azul-claro: #1f5d96;
+    --ocre: #e9a722; --ocre-hondo: #b97a0c;
+    --papel: #f6efe0; --panel: #fffaf0; --tinta: #211a15; --suave: #6a5a4a; --borde: #e2d3bc;
+    --terracota: #a5482a;
+    --ui: "Alegreya Sans", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    --verso: "Alegreya", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body { margin: 0; background: var(--papel); color: var(--tinta); font: 18px/1.6 var(--ui); }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--terracota); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--ocre); outline-offset: 3px; }
+  .ancho { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+
+  /* guarda escalonada, como la de un tejido andino */
+  .guarda { height: 14px; background-color: var(--azul-hondo); background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14'%3E%3Cpath d='M0 11H3V8H6V5H9V2.5H15V5H18V8H21V11H24' fill='none' stroke='%23e9a722' stroke-width='1.3'/%3E%3Crect x='11' y='6.5' width='2' height='2' fill='%23e9a722'/%3E%3C/svg%3E"); }
+
+  /* barra de arriba */
+  .barra { position: sticky; top: 0; z-index: 20; background: var(--azul-hondo); color: #fff; }
+  .barra .ancho { display: flex; align-items: center; gap: 18px; min-height: 56px; }
+  .barra .nombre { font: 700 21px/1 var(--verso); color: #fff; text-decoration: none; white-space: nowrap; letter-spacing: .01em; }
+  .barra nav { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .barra nav::-webkit-scrollbar { display: none; }
+  .barra nav a { color: #e6edf5; text-decoration: none; padding: 8px 10px; border-radius: 7px; font-size: 16px; white-space: nowrap; }
+  .barra nav a:hover { background: rgba(255,255,255,.1); color: #fff; }
+  .idiomas { display: flex; border: 1px solid rgba(255,255,255,.3); border-radius: 8px; overflow: hidden; flex: none; }
+  .idiomas button { font: 700 13.5px var(--ui); letter-spacing: .04em; background: none; border: 0; color: #cfdbe8; padding: 6px 9px; cursor: pointer; }
+  .idiomas button[aria-pressed="true"] { background: var(--ocre); color: var(--azul-hondo); }
+
+  /* portada */
+  .portada { background: radial-gradient(120% 90% at 78% 40%, var(--azul-claro) 0%, var(--azul) 38%, var(--azul-hondo) 78%); color: #fff; overflow: hidden; }
+  .portada .ancho { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 20px; align-items: end; min-height: min(86vh, 760px); }
+  .portada .texto { padding: 70px 0 74px; align-self: center; }
+  .sobre { font: 700 14.5px var(--ui); letter-spacing: .16em; text-transform: uppercase; color: var(--ocre); margin: 0 0 14px; }
+  .portada h1 { font: 800 clamp(52px, 8.4vw, 104px)/.95 var(--verso); margin: 0 0 22px; letter-spacing: -.01em; }
+  .portada .bajada { font: 400 clamp(20px, 2.1vw, 24px)/1.45 var(--verso); margin: 0 0 30px; max-width: 30em; color: #eef3f8; }
+  .botones { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 9px; font: 700 17px var(--ui); text-decoration: none; padding: 12px 20px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; }
+  .btn.lleno { background: var(--ocre); color: var(--azul-hondo); }
+  .btn.lleno:hover { filter: brightness(1.07); }
+  .btn.linea { border-color: rgba(255,255,255,.55); color: #fff; }
+  .btn.linea:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+  .btn.oscuro { background: var(--azul); color: #fff; }
+  .btn.oscuro:hover { background: var(--azul-claro); }
+  .btn.borde { border-color: var(--azul); color: var(--azul); }
+  .btn.borde:hover { background: rgba(20,64,107,.07); }
+  .portada .foto { align-self: end; height: 100%; display: flex; align-items: flex-end; }
+  .portada .foto img { width: 100%; max-height: min(86vh, 760px); object-fit: cover; object-position: 50% 12%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 86%, transparent 100%), linear-gradient(to bottom, #000 80%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 86%, transparent 100%), linear-gradient(to bottom, #000 80%, transparent 100%); mask-composite: intersect; }
+
+  /* tira de credenciales */
+  .credenciales { background: var(--azul-hondo); color: #e6edf5; }
+  .credenciales ul { list-style: none; margin: 0; padding: 18px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 30px; }
+  .credenciales li { font-size: 16.5px; line-height: 1.35; padding-left: 16px; border-left: 3px solid var(--ocre); }
+  .credenciales b { display: block; font: 700 19px/1.25 var(--verso); color: #fff; }
+
+  /* secciones */
+  section.bloque { padding: 76px 0; }
+  section.bloque.claro { background: var(--panel); }
+  h2 { font: 800 clamp(34px, 4.4vw, 46px)/1.08 var(--verso); margin: 0 0 8px; color: var(--azul-hondo); }
+  h2::before { content: ""; display: block; width: 54px; height: 6px; margin-bottom: 16px; background: var(--ocre); border-radius: 3px; }
+  .entrada { font: 400 21px/1.5 var(--verso); color: var(--suave); margin: 0 0 34px; max-width: 34em; }
+  h3 { font: 700 23px/1.2 var(--verso); margin: 0 0 6px; color: var(--azul-hondo); }
+  p { margin: 0 0 14px; }
+
+  /* concierto */
+  .dos { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 46px; align-items: start; }
+  .dos .largo p { font-size: 19.5px; max-width: 33em; }
+  .formatos { display: grid; gap: 12px; }
+  .formato { background: var(--panel); border: 1px solid var(--borde); border-left: 5px solid var(--azul); border-radius: 10px; padding: 14px 18px; }
+  .claro .formato { background: var(--papel); }
+  .formato p { margin: 0; color: var(--suave); font-size: 17px; }
+  .datos { margin: 26px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 17.5px; }
+  .datos li { padding-left: 22px; position: relative; }
+  .datos li::before { content: ""; position: absolute; left: 0; top: .62em; width: 9px; height: 9px; background: var(--ocre); transform: rotate(45deg); }
+
+  /* videos */
+  .videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+  .video figcaption { margin-top: 10px; font: 700 20px/1.25 var(--verso); color: var(--azul-hondo); }
+  .video figcaption a { font: 400 15.5px var(--ui); margin-left: 8px; }
+  figure { margin: 0; }
+  .pantalla { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 6px 22px rgba(10,34,57,.22); }
+  .pantalla button { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: #000 center / cover no-repeat; }
+  .pantalla button::after { content: ""; position: absolute; left: 50%; top: 50%; width: 78px; height: 78px; margin: -39px 0 0 -39px; border-radius: 50%;
+    background: var(--ocre) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='%230a2239'/%3E%3C/svg%3E") center / 46px no-repeat; box-shadow: 0 4px 18px rgba(0,0,0,.4); transition: transform .15s; }
+  .pantalla button:hover::after { transform: scale(1.08); }
+  .pantalla iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* disco */
+  .disco { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 46px; align-items: center; }
+  .disco .tapa { border-radius: 10px; border: 1px solid var(--borde); box-shadow: 0 10px 30px rgba(10,34,57,.18); background: #fff; }
+  .disco .ficha { font: 700 14.5px var(--ui); letter-spacing: .12em; text-transform: uppercase; color: var(--ocre-hondo); margin: 0 0 6px; }
+  .disco h2::before { display: none; }
+  .disco h2 { font-style: italic; margin-bottom: 14px; }
+  .puestos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 22px 0 24px; }
+  .puesto { border: 1px solid var(--borde); border-radius: 10px; padding: 12px 16px; background: var(--papel); }
+  .puesto b { font: 800 34px/1 var(--verso); color: var(--azul); display: block; }
+  .puesto span { font-size: 16px; color: var(--suave); line-height: 1.3; display: block; margin-top: 4px; }
+
+  /* prensa */
+  .citas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 44px; }
+  .cita { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 24px 26px 20px; margin: 0; display: flex; flex-direction: column; gap: 14px; position: relative; }
+  .cita p { font: italic 500 24px/1.32 var(--verso); margin: 0; color: var(--azul-hondo); }
+  .cita.grande { grid-column: 1 / -1; background: var(--azul-hondo); border-color: var(--azul-hondo); padding: 34px 36px 28px; }
+  .cita.grande p { color: #fff; font-size: clamp(26px, 3.4vw, 36px); }
+  .cita footer { font-size: 16px; color: var(--suave); margin-top: auto; }
+  .cita.grande footer { color: #cfdbe8; }
+  .cita footer b { color: var(--tinta); }
+  .cita.grande footer b { color: var(--ocre); }
+  .cita.grande footer a { color: #fff; }
+  .sono { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+  .sono h3 { grid-column: 1 / -1; margin-bottom: 12px; }
+  .sono ul { list-style: none; margin: 0; padding: 0; }
+  .sono li { padding: 11px 0; border-top: 1px solid var(--borde); font-size: 17px; line-height: 1.35; }
+  .sono li b { font: 700 19px var(--verso); }
+  .sono li span { color: var(--suave); display: block; }
+  .sono li a { text-decoration: none; color: inherit; }
+  .sono li a:hover b { color: var(--terracota); text-decoration: underline; }
+
+  /* fotos */
+  .galeria { columns: 4 220px; column-gap: 14px; }
+  .galeria a { display: block; margin-bottom: 14px; border-radius: 10px; overflow: hidden; break-inside: avoid; background: var(--azul-hondo); }
+  .galeria img { width: 100%; height: auto; transition: transform .35s, opacity .2s; }
+  .galeria a:hover img { transform: scale(1.035); opacity: .93; }
+  .nota { font-size: 16px; color: var(--suave); margin-top: 14px; }
+
+  /* bio */
+  .bio { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 46px; align-items: start; }
+  .bio img { border-radius: 12px; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; width: 100%; }
+  .bio p { font-size: 19.5px; max-width: 34em; }
+  .bio p:first-of-type { font: 400 23px/1.5 var(--verso); }
+
+  /* contacto */
+  .contacto { background: var(--azul-hondo); color: #e6edf5; padding: 76px 0 64px; }
+  .contacto h2 { color: #fff; }
+  .contacto .entrada { color: #cfdbe8; }
+  .tarjetas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .tarjeta { border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 24px 26px; }
+  .tarjeta h3 { color: var(--ocre); font-size: 15px; font-family: var(--ui); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+  .tarjeta .quien { font: 700 26px/1.2 var(--verso); color: #fff; margin: 0 0 10px; }
+  .tarjeta p { margin: 0 0 4px; }
+  .tarjeta a { color: #fff; }
+  .redes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .redes a { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.3); border-radius: 99px; padding: 7px 17px; font-size: 16.5px; }
+  .redes a:hover { border-color: var(--ocre); color: var(--ocre); }
+  .pie { background: var(--azul-hondo); color: #9fb3c8; font-size: 14.5px; padding: 18px 0 26px; }
+  .pie .ancho { display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+
+  @media (max-width: 860px) {
+    body { font-size: 17px; }
+    .barra nav { display: none; }
+    .barra .idiomas { margin-left: auto; }
+    .portada .ancho { grid-template-columns: 1fr; min-height: 0; gap: 0; }
+    .portada .texto { padding: 44px 0 10px; }
+    .portada .foto img { max-height: 62vh; object-position: 50% 8%; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 82%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 82%, transparent 100%); }
+    .credenciales ul, .dos, .videos, .disco, .citas, .sono, .bio, .tarjetas { grid-template-columns: 1fr; }
+    .dos, .disco, .bio { gap: 28px; }
+    .disco .tapa { max-width: 320px; }
+    .bio img { max-width: 300px; }
+    section.bloque, .contacto { padding: 54px 0; }
+    .cita.grande { padding: 26px 24px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="ancho">
+    <a class="nombre" href="#inicio">Marco Grancelli</a>
+    <nav aria-label="Secciones">
+      <a href="#concierto" data-t="n-concierto">El concierto</a>
+      <a href="#videos" data-t="n-videos">Videos</a>
+      <a href="#disco" data-t="n-disco">Disco</a>
+      <a href="#prensa" data-t="n-prensa">Prensa</a>
+      <a href="#fotos" data-t="n-fotos">Fotos</a>
+      <a href="#bio" data-t="n-bio">Biografía</a>
+      <a href="#contacto" data-t="n-contacto">Contacto</a>
+    </nav>
+    <div class="idiomas" role="group" aria-label="Idioma / Langue / Language">
+      <button type="button" data-idioma="es" aria-pressed="true">ES</button>
+      <button type="button" data-idioma="fr" aria-pressed="false">FR</button>
+      <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PORTADA ============ -->
+<section class="portada" id="inicio">
+  <div class="ancho">
+    <div class="texto">
+      <p class="sobre" data-t="p-sobre">Folclore sudamericano · voz y guitarra</p>
+      <h1>Marco<br>Grancelli</h1>
+      <p class="bajada" data-t="p-bajada">Cantor, guitarrista y compositor argentino radicado en Toulouse. Zambas, chacareras, vidalas y valses criollos, junto a canciones propias.</p>
+      <div class="botones">
+        <a class="btn lleno" href="#videos" data-t="p-btn1">▶ Ver el teaser</a>
+        <a class="btn linea" href="#contacto" data-t="p-btn2">Contacto</a>
+      </div>
+    </div>
+    <div class="foto"><img src="fotos/marco-guitarra-azul.jpg" alt="Marco Grancelli con su guitarra" width="1133" height="1700"></div>
+  </div>
+</section>
+<div class="guarda" aria-hidden="true"></div>
+
+<div class="credenciales">
+  <div class="ancho">
+    <ul>
+      <li><b data-t="c-1a">World Music Charts Europe</b><span data-t="c-1b">«Camino Trunco», puesto 20 en septiembre de 2026</span></li>
+      <li><b data-t="c-2a">Transglobal World Music Chart</b><span data-t="c-2b">Entre los 40 primeros en enero y febrero de 2026</span></li>
+      <li><b data-t="c-3a">WOMEX 2022</b><span data-t="c-3b">Showcase oficial en Lisboa, con el dúo Aguamadera</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ EL CONCIERTO ============ -->
+<section class="bloque" id="concierto">
+  <div class="ancho">
+    <h2 data-t="co-h">El concierto</h2>
+    <p class="entrada" data-t="co-entrada">Un viaje musical y poético por Sudamérica, entre la intimidad y el compromiso.</p>
+    <div class="dos">
+      <div class="largo">
+        <p data-t="co-p1">Marco combina composiciones propias con repertorio tradicional: zambas y chacareras argentinas, valses y marineras del Perú, vidalas del norte y otras músicas que aprendió viajando por el continente.</p>
+        <p data-t="co-p2">Son canciones que hablan del amor, el viaje, la ancestralidad y la lucha social, con una instrumentación mínima y tradicional: la voz, la guitarra y, a veces, el bombo legüero o la caja.</p>
+      </div>
+      <div class="formatos">
+        <div class="formato">
+          <h3 data-t="co-f1a">Solo</h3>
+          <p data-t="co-f1b">Voz y guitarra.</p>
+        </div>
+        <div class="formato">
+          <h3 data-t="co-f2a">Dúo con percusión</h3>
+          <p data-t="co-f2b">Con Luciano Luna en bombo legüero y voz.</p>
+        </div>
+        <div class="formato">
+          <h3 data-t="co-f3a">Dúo con acordeón</h3>
+          <p data-t="co-f3b">Con Corentin Restif en acordeón.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section class="bloque claro" id="videos">
+  <div class="ancho">
+    <h2 data-t="v-h">Videos</h2>
+    <p class="entrada" data-t="v-entrada">El concierto en dos minutos, y un tema entero en vivo.</p>
+    <div class="videos">
+      <figure class="video">
+        <div class="pantalla"><button type="button" data-yt="p4rGC4ERLRU" aria-label="Teaser"></button></div>
+        <figcaption><span data-t="v-1">Teaser del concierto</span> <a href="https://www.youtube.com/watch?v=p4rGC4ERLRU" target="_blank" rel="noopener">YouTube ↗</a></figcaption>
+      </figure>
+      <figure class="video">
+        <div class="pantalla"><button type="button" data-yt="uebKZOgyWDQ" aria-label="Con el Alma Dividida"></button></div>
+        <figcaption><span data-t="v-2">«Con el Alma Dividida», en vivo</span> <a href="https://www.youtube.com/watch?v=uebKZOgyWDQ" target="_blank" rel="noopener">YouTube ↗</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISCO ============ -->
+<section class="bloque" id="disco">
+  <div class="ancho disco">
+    <img class="tapa" src="fotos/tapa-camino-trunco.jpg" alt="Tapa del disco Camino Trunco" width="1000" height="1000" loading="lazy">
+    <div>
+      <p class="ficha" data-t="d-ficha">Primer disco solista · diciembre de 2025 · 12 temas</p>
+      <h2>Camino Trunco</h2>
+      <p data-t="d-p1">Una travesía íntima y expresiva por el folclore argentino y sudamericano, con voz, guitarras y bombo legüero. Obras propias sobre el amor, la muerte, la ancestralidad, la naturaleza y la lucha social, donde se cruzan la raíz argentina, los ecos andinos y una mirada personal.</p>
+      <div class="puestos">
+        <div class="puesto"><b>20</b><span data-t="d-c1">World Music Charts Europe, septiembre de 2026</span></div>
+        <div class="puesto"><b>34 · 35</b><span data-t="d-c2">Transglobal World Music Chart, enero y febrero de 2026</span></div>
+      </div>
+      <div class="botones">
+        <a class="btn oscuro" href="https://open.spotify.com/intl-es/album/3i7zFYOqQYtBNHVbx5iuAD" target="_blank" rel="noopener" data-t="d-btn1">Escuchar en Spotify</a>
+        <a class="btn borde" href="https://linktr.ee/marcograncelli" target="_blank" rel="noopener" data-t="d-btn2">Press kit y más enlaces</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRENSA ============ -->
+<section class="bloque claro" id="prensa">
+  <div class="ancho">
+    <h2 data-t="pr-h">Prensa</h2>
+    <p class="entrada" data-t="pr-entrada">Lo que dijeron del disco y de los conciertos.</p>
+
+    <div class="citas">
+      <blockquote class="cita grande">
+        <p lang="fr">«Marco Grancelli est une figure emblématique du folklore sud-américain.»</p>
+        <footer><b>L'Avenir</b> · <span data-t="pr-c1">Bélgica, julio de 2026</span> · <a href="https://www.lavenir.net/regions/huy-waremme/huy/2026/07/29/que-de-belles-cordes-a-clavier-ce-week-end-avec-le-4e-festival-guitares-du-monde-neuf-concerts-et-des-artistes-venus-de-sept-pays-HYW5SYJMTZHXJOTVVVNATKZYIA/" target="_blank" rel="noopener" data-t="pr-leer">leer la nota ↗</a></footer>
+      </blockquote>
+      <blockquote class="cita">
+        <p lang="es">«Despliega saber y sensibilidad en su primer disco en solitario.»</p>
+        <footer><b>Mil Mundos, Radio 5 (RNE)</b> · <span data-t="pr-c2">España, diciembre de 2025</span> · <a href="https://www.rtve.es/play/audios/mil-mundos-en-radio-5/mil-mundos-radio-5-marco-grancelli/16859212/" target="_blank" rel="noopener" data-t="pr-escuchar">escuchar ↗</a></footer>
+      </blockquote>
+      <blockquote class="cita">
+        <p lang="fr">«Il a fait dialoguer sa guitare avec une voix chargée d'histoires.»</p>
+        <footer><b>Info-Lux</b> · <span data-t="pr-c3">Bélgica, agosto de 2026, sobre el concierto en Guitares du Monde</span> · <a href="https://www.info-lux.com/festival-guitares-monde-2026-clavier-jour1-photos/pays/belgique/wallonie/province-de-liege/clavier/" target="_blank" rel="noopener" data-t="pr-leer">leer la nota ↗</a></footer>
+      </blockquote>
+      <blockquote class="cita">
+        <p lang="ca">«Obra mestre en solitari del cantautor resident a França Marco Grancelli.»</p>
+        <footer><b>Demésenllà</b> · <span data-t="pr-c4">Cataluña, enero de 2026</span> · <a href="https://www.ivoox.com/en/demesenlla-edicio-905-audios-mp3_rf_166724219_1.html" target="_blank" rel="noopener" data-t="pr-escuchar">escuchar ↗</a></footer>
+      </blockquote>
+      <blockquote class="cita">
+        <p lang="en">«Marco Grancelli Hits The Road With Camino Trunco.»</p>
+        <footer><b>World Music Central</b> · <span data-t="pr-c5">Estados Unidos, enero de 2026, reseña del disco tema por tema</span> · <a href="https://worldmusiccentral.org/marco-grancelli-hits-the-road-with-camino-trunco/" target="_blank" rel="noopener" data-t="pr-leer2">leer la reseña ↗</a></footer>
+      </blockquote>
+    </div>
+
+    <div class="sono">
+      <h3 data-t="pr-sono">«Camino Trunco» sonó en</h3>
+      <ul>
+        <li><a href="https://www.rtve.es/play/audios/mil-mundos-en-radio-5/mil-mundos-radio-5-marco-grancelli/16859212/" target="_blank" rel="noopener"><b>Radio 5 · Radio Nacional de España</b><span data-t="pr-s1">Mil Mundos, programa dedicado al disco</span></a></li>
+        <li><a href="https://mundofonias.com/wp/?p=9303" target="_blank" rel="noopener"><b>Mundofonías</b><span data-t="pr-s2">España · más de 50 emisoras, dos emisiones</span></a></li>
+        <li><a href="https://www.stvr.sk/radio/archiv/1455/2867746" target="_blank" rel="noopener"><b>Rádio_FM</b><span data-t="pr-s3">Radio pública de Eslovaquia · Hudba sveta, dos emisiones</span></a></li>
+        <li><a href="https://www.proglas.cz/program/detail-poradu/2026-09-23-07-45-00/" target="_blank" rel="noopener"><b>Radio Proglas</b><span data-t="pr-s4">República Checa · Hudební kompas, disco del día</span></a></li>
+      </ul>
+      <ul>
+        <li><a href="https://davy.substack.com/p/around-the-world-show-notes-1be" target="_blank" rel="noopener"><b>Around the World</b><span data-t="pr-s5">Reino Unido · programa de Davy Sims, en unas 25 radios</span></a></li>
+        <li><a href="https://www.globofonie.com/podcast-2025/" target="_blank" rel="noopener"><b>Globofonie</b><span data-t="pr-s6">Italia · programa de Ciro De Rosa</span></a></li>
+        <li><a href="https://www.lossonidosdelplanetaazul.com/disco/marco-grancelli-camino-trunco/" target="_blank" rel="noopener"><b>Los Sonidos del Planeta Azul</b><span data-t="pr-s7">España · reseña del disco</span></a></li>
+        <li><a href="https://creators.spotify.com/pod/profile/cronicas-quiltras/episodes/Marco-Grancelli-en-Santiago-de-Chile--Pizzeria-Amadeus-e3es2a9" target="_blank" rel="noopener"><b>Crónicas Quiltras</b><span data-t="pr-s8">Chile · podcast, concierto y charla en Santiago</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOTOS ============ -->
+<section class="bloque" id="fotos">
+  <div class="ancho">
+    <h2 data-t="f-h">Fotos</h2>
+    <p class="entrada" data-t="f-entrada">Fotos de prensa. Un clic las abre en grande.</p>
+    <div class="galeria">
+      <a href="fotos/marco-guitarra-azul-2.jpg" target="_blank"><img src="fotos/marco-guitarra-azul-2.jpg" alt="Marco Grancelli mirando su guitarra, fondo azul" width="1000" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-bombo-ocre.jpg" target="_blank"><img src="fotos/marco-bombo-ocre.jpg" alt="Marco Grancelli apoyado en el bombo legüero, fondo ocre" width="1125" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-guitarra-negro.jpg" target="_blank"><img src="fotos/marco-guitarra-negro.jpg" alt="Marco Grancelli con la guitarra al hombro, fondo negro" width="1000" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-perfil-azul.jpg" target="_blank"><img src="fotos/marco-perfil-azul.jpg" alt="Marco Grancelli de perfil junto al clavijero tallado de su guitarra" width="1000" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-guitarra-ocre.jpg" target="_blank"><img src="fotos/marco-guitarra-ocre.jpg" alt="Marco Grancelli con su guitarra, fondo ocre" width="1000" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-bombo-azul.jpg" target="_blank"><img src="fotos/marco-bombo-azul.jpg" alt="Marco Grancelli con el bombo legüero, fondo azul" width="1125" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-bombo-negro-2.jpg" target="_blank"><img src="fotos/marco-bombo-negro-2.jpg" alt="Marco Grancelli tocando el bombo legüero, fondo negro" width="1000" height="1500" loading="lazy"></a>
+      <a href="fotos/marco-guitarra-azul.jpg" target="_blank"><img src="fotos/marco-guitarra-azul.jpg" alt="Marco Grancelli con su guitarra, fondo azul" width="1133" height="1700" loading="lazy"></a>
+    </div>
+    <p class="nota" data-t="f-nota">Fotos: Lionel Pesqué.</p>
+  </div>
+</section>
+
+<!-- ============ BIO ============ -->
+<section class="bloque claro" id="bio">
+  <div class="ancho">
+    <h2 data-t="b-h">Biografía</h2>
+    <div class="bio" style="margin-top:28px">
+      <img src="fotos/marco-bombo-negro.jpg" alt="Marco Grancelli con el bombo legüero" width="1000" height="1500" loading="lazy">
+      <div>
+        <p data-t="b-p1">Argentino, radicado en Toulouse y en viaje constante por Sudamérica, Marco Grancelli canta y toca el folclore del continente como quien lo aprendió de primera mano.</p>
+        <p data-t="b-p2">Con el dúo Aguamadera investigó, arregló y compuso sobre géneros tradicionales durante años. Con ese grupo llegó al showcase oficial de WOMEX 2022 en Lisboa, a los conciertos de Ocora Couleurs du monde en France Musique y al programa The World, en Estados Unidos.</p>
+        <p data-t="b-p3">Sus viajes por Perú y Chile, donde compartió encuentros musicales con grandes exponentes de la música criolla, y su trabajo documental en el Norte argentino lo dejaron como en su casa en muchos estilos del folclore. Hoy integra además el Trío Tikismikis, de folclore argentino.</p>
+        <p data-t="b-p4">«Camino Trunco» (2025), su primer disco solista, entró a los dos charts internacionales de músicas del mundo y sonó en radios de una decena de países.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<div class="guarda" aria-hidden="true"></div>
+<section class="contacto" id="contacto">
+  <div class="ancho">
+    <h2 data-t="k-h">Contacto</h2>
+    <div class="tarjetas" style="margin-top:26px">
+      <div class="tarjeta">
+        <h3 data-t="k-1">Booking</h3>
+        <p class="quien">KBKC Artistes</p>
+        <p>Téo · <a href="tel:+33633497643">+33 (0)6 33 49 76 43</a></p>
+        <p><a href="mailto:booking@kbkc-artistes.com">booking@kbkc-artistes.com</a></p>
+        <p><a href="https://www.kbkc-artistes.com" target="_blank" rel="noopener">www.kbkc-artistes.com ↗</a></p>
+      </div>
+      <div class="tarjeta">
+        <h3 data-t="k-2">El artista</h3>
+        <p class="quien">Marco Grancelli</p>
+        <p><a href="mailto:info@marcograncelli.com">info@marcograncelli.com</a></p>
+        <p data-t="k-idiomas">Castellano, francés, inglés</p>
+      </div>
+    </div>
+    <div class="redes">
+      <a href="https://www.instagram.com/marcograncelli/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/Marcograncellimusica" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://open.spotify.com/intl-es/album/3i7zFYOqQYtBNHVbx5iuAD" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://www.youtube.com/watch?v=p4rGC4ERLRU" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://linktr.ee/marcograncelli" target="_blank" rel="noopener">Press kit</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="ancho">
+    <span>© 2026 Marco Grancelli</span>
+    <span data-t="pie-tapa">Tapa de «Camino Trunco» y fotos: todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<script>
+/* TEXTOS: clave, francés, inglés. El castellano es el que está escrito en la página. */
+var TEXTOS = {
+  "n-concierto": ["Le concert", "The concert"],
+  "n-videos": ["Vidéos", "Videos"],
+  "n-disco": ["Album", "Album"],
+  "n-prensa": ["Presse", "Press"],
+  "n-fotos": ["Photos", "Photos"],
+  "n-bio": ["Biographie", "Biography"],
+  "n-contacto": ["Contact", "Contact"],
+
+  "p-sobre": ["Folklore sud-américain · voix et guitare", "South American folk · voice and guitar"],
+  "p-bajada": ["Chanteur, guitariste et compositeur argentin installé à Toulouse. Zambas, chacareras, vidalas et valses créoles, aux côtés de ses propres chansons.",
+               "Argentine singer, guitarist and songwriter based in Toulouse. Zambas, chacareras, vidalas and criollo waltzes, alongside his own songs."],
+  "p-btn1": ["▶ Voir le teaser", "▶ Watch the teaser"],
+  "p-btn2": ["Contact", "Contact"],
+
+  "c-1a": ["World Music Charts Europe", "World Music Charts Europe"],
+  "c-1b": ["« Camino Trunco », 20e en septembre 2026", "“Camino Trunco”, no. 20 in September 2026"],
+  "c-2a": ["Transglobal World Music Chart", "Transglobal World Music Chart"],
+  "c-2b": ["Dans le top 40 en janvier et février 2026", "Top 40 in January and February 2026"],
+  "c-3a": ["WOMEX 2022", "WOMEX 2022"],
+  "c-3b": ["Showcase officiel à Lisbonne, avec le duo Aguamadera", "Official showcase in Lisbon, with the duo Aguamadera"],
+
+  "co-h": ["Le concert", "The concert"],
+  "co-entrada": ["Un voyage musical et poétique à travers l'Amérique du Sud, entre intimité et engagement.",
+                 "A musical and poetic journey across South America, between intimacy and commitment."],
+  "co-p1": ["Marco mêle ses compositions au répertoire traditionnel : zambas et chacareras argentines, valses et marineras du Pérou, vidalas du nord et d'autres musiques apprises au fil de ses voyages sur le continent.",
+            "Marco blends his own compositions with traditional repertoire: Argentine zambas and chacareras, Peruvian waltzes and marineras, vidalas from the north and other music he learned travelling across the continent."],
+  "co-p2": ["Des chansons qui parlent d'amour, de voyage, des ancêtres et des luttes sociales, avec une instrumentation minimale et traditionnelle : la voix, la guitare et, parfois, le bombo legüero ou la caja.",
+            "Songs about love, travel, ancestry and social struggle, with a minimal, traditional instrumentation: voice, guitar and, at times, the bombo legüero or the caja."],
+  "co-f1a": ["Solo", "Solo"],
+  "co-f1b": ["Voix et guitare.", "Voice and guitar."],
+  "co-f2a": ["Duo avec percussions", "Duo with percussion"],
+  "co-f2b": ["Avec Luciano Luna au bombo legüero et au chant.", "With Luciano Luna on bombo legüero and vocals."],
+  "co-f3a": ["Duo avec accordéon", "Duo with accordion"],
+  "co-f3b": ["Avec Corentin Restif à l'accordéon.", "With Corentin Restif on accordion."],
+
+  "v-h": ["Vidéos", "Videos"],
+  "v-entrada": ["Le concert en deux minutes, et un morceau entier en live.", "The concert in two minutes, and one full song live."],
+  "v-1": ["Teaser du concert", "Concert teaser"],
+  "v-2": ["« Con el Alma Dividida », en live", "“Con el Alma Dividida”, live"],
+
+  "d-ficha": ["Premier album solo · décembre 2025 · 12 titres", "First solo album · December 2025 · 12 tracks"],
+  "d-p1": ["Une traversée intime et expressive du folklore argentin et sud-américain, avec voix, guitares et bombo legüero. Des œuvres originales sur l'amour, la mort, les ancêtres, la nature et les luttes sociales, où se croisent les racines argentines, les échos andins et un regard personnel.",
+           "An intimate, expressive journey through Argentine and South American folk music, with voice, guitars and bombo legüero. Original works about love, death, ancestry, nature and social struggle, where Argentine roots, Andean echoes and a personal outlook meet."],
+  "d-c1": ["World Music Charts Europe, septembre 2026", "World Music Charts Europe, September 2026"],
+  "d-c2": ["Transglobal World Music Chart, janvier et février 2026", "Transglobal World Music Chart, January and February 2026"],
+  "d-btn1": ["Écouter sur Spotify", "Listen on Spotify"],
+  "d-btn2": ["Press kit et autres liens", "Press kit and more links"],
+
+  "pr-h": ["Presse", "Press"],
+  "pr-entrada": ["Ce qu'on a dit de l'album et des concerts.", "What has been said about the album and the concerts."],
+  "pr-c1": ["Belgique, juillet 2026", "Belgium, July 2026"],
+  "pr-c2": ["Espagne, décembre 2025", "Spain, December 2025"],
+  "pr-c3": ["Belgique, août 2026, à propos du concert à Guitares du Monde", "Belgium, August 2026, on the concert at Guitares du Monde"],
+  "pr-c4": ["Catalogne, janvier 2026", "Catalonia, January 2026"],
+  "pr-c5": ["États-Unis, janvier 2026, chronique de l'album titre par titre", "United States, January 2026, track-by-track album review"],
+  "pr-leer": ["lire l'article ↗", "read the article ↗"],
+  "pr-leer2": ["lire la chronique ↗", "read the review ↗"],
+  "pr-escuchar": ["écouter ↗", "listen ↗"],
+  "pr-sono": ["« Camino Trunco » a été diffusé sur", "“Camino Trunco” was played on"],
+  "pr-s1": ["Mil Mundos, émission consacrée à l'album", "Mil Mundos, a programme devoted to the album"],
+  "pr-s2": ["Espagne · plus de 50 radios, deux émissions", "Spain · over 50 stations, two shows"],
+  "pr-s3": ["Radio publique slovaque · Hudba sveta, deux émissions", "Slovak public radio · Hudba sveta, two shows"],
+  "pr-s4": ["République tchèque · Hudební kompas, album du jour", "Czech Republic · Hudební kompas, album of the day"],
+  "pr-s5": ["Royaume-Uni · émission de Davy Sims, sur environ 25 radios", "United Kingdom · Davy Sims' show, on some 25 stations"],
+  "pr-s6": ["Italie · émission de Ciro De Rosa", "Italy · Ciro De Rosa's show"],
+  "pr-s7": ["Espagne · chronique de l'album", "Spain · album review"],
+  "pr-s8": ["Chili · podcast, concert et entretien à Santiago", "Chile · podcast, concert and conversation in Santiago"],
+
+  "f-h": ["Photos", "Photos"],
+  "f-entrada": ["Photos de presse. Un clic pour les agrandir.", "Press photos. Click to enlarge."],
+  "f-nota": ["Photos : Lionel Pesqué.", "Photos: Lionel Pesqué."],
+
+  "b-h": ["Biographie", "Biography"],
+  "b-p1": ["Argentin, installé à Toulouse et en voyage constant à travers l'Amérique du Sud, Marco Grancelli chante et joue le folklore du continent comme quelqu'un qui l'a appris à la source.",
+           "Argentine-born, based in Toulouse and constantly travelling across South America, Marco Grancelli sings and plays the continent's folk music as someone who learned it first-hand."],
+  "b-p2": ["Avec le duo Aguamadera, il a étudié, arrangé et composé pendant des années autour des genres traditionnels. Avec ce groupe, il a joué en showcase officiel au WOMEX 2022 à Lisbonne, aux concerts d'Ocora Couleurs du monde sur France Musique et dans l'émission The World, aux États-Unis.",
+           "With the duo Aguamadera he spent years researching, arranging and composing within traditional genres. With that group he played an official showcase at WOMEX 2022 in Lisbon, the Ocora Couleurs du monde concerts on France Musique and the US radio programme The World."],
+  "b-p3": ["Ses voyages au Pérou et au Chili, où il a partagé des rencontres musicales avec de grandes figures de la musique créole, et son travail documentaire dans le Nord argentin l'ont rendu à l'aise dans de nombreux styles du folklore. Il fait aussi partie du Trío Tikismikis, consacré au folklore argentin.",
+           "His travels in Peru and Chile, where he shared musical encounters with leading figures of criollo music, and his documentary work in northern Argentina have made him at home in many folk styles. He is also a member of Trío Tikismikis, devoted to Argentine folk music."],
+  "b-p4": ["« Camino Trunco » (2025), son premier album solo, est entré dans les deux classements internationaux des musiques du monde et a été diffusé par des radios d'une dizaine de pays.",
+           "“Camino Trunco” (2025), his first solo album, entered both international world music charts and was played by radio stations in some ten countries."],
+
+  "k-h": ["Contact", "Contact"],
+  "k-entrada": ["Pour programmer un concert, demander la fiche technique ou du matériel de presse.", "To book a concert, or to request the tech rider or press material."],
+  "k-1": ["Booking", "Booking"],
+  "k-2": ["L'artiste", "The artist"],
+  "k-idiomas": ["Espagnol, français, anglais", "Spanish, French, English"],
+  "pie-tapa": ["Pochette de « Camino Trunco » et photos : tous droits réservés.", "“Camino Trunco” cover and photos: all rights reserved."]
+};
+
+(function () {
+  var nodos = Array.prototype.slice.call(document.querySelectorAll('[data-t]'));
+  nodos.forEach(function (n) { n.setAttribute('data-es', n.innerHTML); });
+  var botones = Array.prototype.slice.call(document.querySelectorAll('.idiomas button'));
+  var titulos = {
+    es: 'Marco Grancelli · Folclore sudamericano, voz y guitarra',
+    fr: 'Marco Grancelli · Folklore sud-américain, voix et guitare',
+    en: 'Marco Grancelli · South American folk, voice and guitar'
+  };
+  function poner(idioma) {
+    var i = idioma === 'fr' ? 0 : 1;
+    nodos.forEach(function (n) {
+      var par = TEXTOS[n.getAttribute('data-t')];
+      n.innerHTML = (idioma === 'es' || !par) ? n.getAttribute('data-es') : par[i];
+    });
+    document.documentElement.lang = idioma;
+    document.title = titulos[idioma];
+    botones.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-idioma') === idioma)); });
+    try { localStorage.setItem('idioma', idioma); } catch (e) {}
+  }
+  botones.forEach(function (b) { b.addEventListener('click', function () { poner(b.getAttribute('data-idioma')); }); });
+  var guardado = null;
+  try { guardado = localStorage.getItem('idioma'); } catch (e) {}
+  var nav = (navigator.language || 'es').slice(0, 2).toLowerCase();
+  var inicial = guardado || (nav === 'es' || nav === 'fr' ? nav : (nav === 'ca' || nav === 'gl' ? 'es' : 'en'));
+  if (inicial !== 'es') poner(inicial);
+
+  /* videos: se ve la imagen y recién al tocar se carga YouTube */
+  Array.prototype.forEach.call(document.querySelectorAll('.pantalla button'), function (b) {
+    var id = b.getAttribute('data-yt');
+    b.style.backgroundImage = 'url(https://img.youtube.com/vi/' + id + '/maxresdefault.jpg), url(https://img.youtube.com/vi/' + id + '/hqdefault.jpg)';
+    b.addEventListener('click', function () {
+      if (location.protocol === 'file:') { window.open('https://www.youtube.com/watch?v=' + id, '_blank'); return; }
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      f.title = b.getAttribute('aria-label');
+      b.parentNode.replaceChild(f, b);
+    });
+  });
+})();
+</script>
+</body>
+</html>
