@@ -21,6 +21,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;1,400;1,500;1,800&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Estadísticas de visitas (Umami, sin cookies): el mismo código que coplario.com y triotikismikis.com; en el panel se separa con el filtro Hostname. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="389c338f-0543-4235-92ae-582fab6ea949" data-domains="www.marcograncelli.com,marcograncelli.com"></script>
+<!-- Aviso de cookies y pixel de Meta (el pixel solo se carga si la persona acepta). -->
+<script src="cookies.js" defer></script>
 <!--
   CÓMO CAMBIAR LOS TEXTOS
   - El castellano está escrito acá abajo, en la página. El francés y el inglés están al final,
@@ -180,6 +184,18 @@
   .redes a:hover { border-color: var(--ocre); color: var(--ocre); }
   .pie { background: var(--azul-hondo); color: #9fb3c8; font-size: 14.5px; padding: 18px 0 26px; }
   .pie .ancho { display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+  .pie a { color: #cfdbe8; }
+
+  /* aviso de cookies: chico, abajo a la izquierda; los dos botones iguales */
+  .cookies { position: fixed; left: 16px; bottom: 16px; z-index: 45; max-width: min(400px, calc(100vw - 32px)); background: var(--panel); color: var(--tinta);
+    border: 1px solid var(--borde); border-radius: 10px; box-shadow: 0 2px 12px rgba(10,34,57,.18); padding: 8px 10px;
+    display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font: 13.5px/1.35 var(--ui); }
+  .cookies p { margin: 0; flex: 1 1 180px; }
+  .cookies a { color: var(--azul); }
+  .cookies-botones { display: flex; gap: 6px; margin-left: auto; }
+  .cookies-btn { min-height: 30px; padding: 3px 11px; font: 700 13.5px var(--ui); border-radius: 7px; cursor: pointer;
+    background: var(--panel); color: var(--azul-hondo); border: 1px solid var(--azul); }
+  .cookies-btn:hover { background: rgba(20,64,107,.07); }
 
   @media (max-width: 860px) {
     body { font-size: 17px; }
@@ -430,6 +446,7 @@
   <div class="ancho">
     <span>© 2026 Marco Grancelli</span>
     <span data-t="pie-tapa">Tapa de «Camino Trunco» y fotos: todos los derechos reservados.</span>
+    <a href="privacidad.html" data-t="pie-priv">Privacidad y cookies</a>
   </div>
 </footer>
 
@@ -519,7 +536,8 @@ var TEXTOS = {
   "k-entrada": ["Pour programmer un concert, demander la fiche technique ou du matériel de presse.", "To book a concert, or to request the tech rider or press material."],
   "k-1": ["Booking", "Booking"],
   "k-2": ["L'artiste", "The artist"],
-  "pie-tapa": ["Pochette de « Camino Trunco » et photos : tous droits réservés.", "“Camino Trunco” cover and photos: all rights reserved."]
+  "pie-tapa": ["Pochette de « Camino Trunco » et photos : tous droits réservés.", "“Camino Trunco” cover and photos: all rights reserved."],
+  "pie-priv": ["Confidentialité et cookies", "Privacy and cookies"]
 };
 
 (function () {
