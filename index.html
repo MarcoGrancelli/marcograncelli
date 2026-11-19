@@ -169,6 +169,35 @@
   .bio p { font-size: 19.5px; max-width: 34em; }
   .bio p:first-of-type { font: 400 23px/1.5 var(--verso); }
 
+  /* coplario: texto a la izquierda y, a la derecha, una ventanita dibujada con los colores de coplario.com */
+  .coplario { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 50px; align-items: center; }
+  .coplario .largo p { font-size: 19.5px; max-width: 33em; }
+  .cifras { display: flex; flex-wrap: wrap; gap: 10px 34px; margin: 24px 0 28px; padding: 0; list-style: none; }
+  .cifras li { font-size: 16px; color: var(--suave); line-height: 1.25; }
+  .cifras b { display: block; font: 800 32px/1.05 var(--verso); color: var(--azul); }
+  .cp-nota { font-size: 15px; color: var(--suave); margin: 12px 0 0; }
+  .ventana { display: block; text-decoration: none; color: #2b2019; border-radius: 12px; overflow: hidden; background: #f5ecdd;
+    border: 1px solid #d9c7ad; box-shadow: 0 12px 34px rgba(51,36,27,.24); transition: transform .2s, box-shadow .2s; }
+  .ventana:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(51,36,27,.28); }
+  .v-barra { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: #e6dac5; }
+  .v-barra i { width: 10px; height: 10px; border-radius: 50%; background: #c9b597; flex: none; }
+  .v-barra span { margin-left: 8px; flex: 1; background: #fbf3e4; border-radius: 6px; padding: 2px 10px; font: 13px var(--ui); color: #6a5a4a; }
+  .cp-cabeza { background: #33241b; color: #fbf3e4; padding: 13px 16px 11px; display: flex; align-items: center; gap: 14px; }
+  .cp-cabeza b { display: block; font: 800 26px/1 var(--verso); }
+  .cp-cabeza small { display: block; font: 13.5px/1.3 var(--ui); color: #d9c7ad; margin-top: 3px; }
+  .cp-cabeza em { display: block; font: italic 13.5px/1.3 var(--verso); color: #e9b24f; }
+  .cp-busca { margin-left: auto; flex: 1; max-width: 210px; background: #fbf3e4; color: #8a7a68; border-radius: 8px; padding: 7px 11px; font: 14px var(--ui); white-space: nowrap; overflow: hidden; }
+  .cp-guarda { height: 13px; background-color: #33241b; background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='13'%3E%3Cpath d='M0 10.5H3V7.5H6V4.5H9V2H15V4.5H18V7.5H21V10.5H24' fill='none' stroke='%23b99a66' stroke-width='1.3'/%3E%3Crect x='11' y='6' width='2' height='2' fill='%23b99a66'/%3E%3C/svg%3E"); }
+  .cp-cuerpo { padding: 14px 16px 18px; display: grid; gap: 12px; }
+  .cp-chips { font: 13.5px var(--ui); color: #6a5a4a; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .cp-chips span { border: 1px solid #d9c7ad; border-radius: 99px; padding: 2px 11px; background: #fbf3e4; }
+  .cp-total { font: 700 17px var(--verso); color: #2b2019; }
+  .cp-copla { background: #fdf7ec; border: 1px solid #e6d8c2; border-radius: 10px; padding: 15px 18px 12px; }
+  .cp-copla p { font: 400 18.5px/1.45 var(--verso); margin: 0 0 9px; color: #2b2019; }
+  .cp-copla small { display: block; font: italic 13.5px/1.35 var(--verso); color: #6a5a4a; }
+  .cp-copla .tags { display: block; font: 12.5px var(--ui); color: #8a7a68; margin-top: 6px; }
+
   /* contacto */
   .contacto { background: var(--azul-hondo); color: #e6edf5; padding: 76px 0 64px; }
   .contacto h2 { color: #fff; }
@@ -204,8 +233,12 @@
     .portada .ancho { grid-template-columns: 1fr; min-height: 0; gap: 0; }
     .portada .texto { padding: 44px 0 10px; }
     .portada .foto img { max-height: 62vh; object-position: 50% 8%; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 82%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 82%, transparent 100%); }
-    .credenciales ul, .dos, .videos, .disco, .citas, .sono, .bio, .tarjetas { grid-template-columns: 1fr; }
-    .dos, .disco, .bio { gap: 28px; }
+    .credenciales ul, .dos, .videos, .disco, .citas, .sono, .bio, .tarjetas, .coplario { grid-template-columns: 1fr; }
+    .dos, .disco, .bio, .coplario { gap: 28px; }
+    .cifras { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px 20px; }
+    .cifras b { font-size: 27px; }
+    .cp-busca { display: none; }
+    .cp-copla + .cp-copla { display: none; }
     .disco .tapa { max-width: 320px; }
     .bio img { max-width: 300px; }
     section.bloque, .contacto { padding: 54px 0; }
@@ -226,6 +259,7 @@
       <a href="#prensa" data-t="n-prensa">Prensa</a>
       <a href="#fotos" data-t="n-fotos">Fotos</a>
       <a href="#bio" data-t="n-bio">Biografía</a>
+      <a href="#coplario">Coplario</a>
       <a href="#contacto" data-t="n-contacto">Contacto</a>
     </nav>
     <div class="idiomas" role="group" aria-label="Idioma / Langue / Language">
@@ -411,6 +445,51 @@
   </div>
 </section>
 
+<!-- ============ COPLARIO ============
+     Las cifras son las de coplario.com del 15/11/2026 (42.015 coplas, 37 fuentes, 16 países). Si crecen mucho, actualizarlas acá y en TEXTOS. -->
+<section class="bloque" id="coplario">
+  <div class="ancho">
+    <h2>Coplario</h2>
+    <p class="entrada" data-t="cp-entrada">Un explorador de coplas tradicionales, abierto a todos, para quien quiera cantarlas, enseñarlas o simplemente leerlas.</p>
+    <div class="coplario">
+      <div class="largo">
+        <p data-t="cp-p1">La copla es la poesía que el pueblo canta y se pasa de boca en boca: cuatro versos que cruzan siglos y fronteras, de Andalucía a Salta, de Veracruz a los Andes. Muchas quedaron guardadas en cancioneros viejos, difíciles de conseguir y de recorrer.</p>
+        <p data-t="cp-p2">Coplario junta en un solo lugar el trabajo de los folcloristas e investigadores que las recopilaron y publicaron a lo largo de más de un siglo y medio. Marco creó la herramienta para recorrerlas: se pueden buscar por palabra, rima, país o tema, y cada copla lleva su fuente, con la página del libro original a un clic.</p>
+        <p data-t="cp-p3">Lo pensó como una herramienta compartida para cantores, copleros, docentes y curiosos: una manera de devolverle a la tradición algo de lo que ella le dio.</p>
+        <ul class="cifras">
+          <li><b data-t="cp-n1">+42.000</b><span>coplas</span></li>
+          <li><b>37</b><span data-t="cp-n2">cancioneros y estudios</span></li>
+          <li><b>16</b><span data-t="cp-n3">países</span></li>
+        </ul>
+        <a class="btn oscuro" href="https://coplario.com/" target="_blank" rel="noopener" data-umami-event="Ir al Coplario" data-t="cp-btn">Explorar el Coplario ↗</a>
+        <p class="cp-nota" data-t="cp-nota">coplario.com</p>
+      </div>
+      <a class="ventana" href="https://coplario.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" data-umami-event="Ir al Coplario (imagen)">
+        <div class="v-barra"><i></i><i></i><i></i><span>coplario.com</span></div>
+        <div class="cp-cabeza">
+          <div><b>Coplario</b><small>explorador de coplas tradicionales</small><em>creado por Marco Grancelli</em></div>
+          <div class="cp-busca">Buscar coplas por palabra</div>
+        </div>
+        <div class="cp-guarda"></div>
+        <div class="cp-cuerpo">
+          <div class="cp-chips">Probá con: <span>paloma</span><span>riman con corazón</span><span>de Argentina</span></div>
+          <div class="cp-total">42.015 coplas</div>
+          <div class="cp-copla" lang="es">
+            <p>Con sus permisos, señores,<br>les cantaré de atrasito,<br>y si me dan sus licencias,<br>les cantaré de adentrito.</p>
+            <small>Argentina (Salta) · Cancionero popular de Salta, Juan Alfonso Carrizo, 1933</small>
+            <span class="tags">Fiesta, baile y vino · copla · rima i-o</span>
+          </div>
+          <div class="cp-copla" lang="es">
+            <p>No soy muñeca de cera,<br>para que juegues conmigo;<br>vete a jugar con tu abuela,<br>la que te cortó el ombligo.</p>
+            <small>México (Veracruz) · Cancionero folklórico de México (Tomo 2), Margit Frenk Alatorre, 1977</small>
+            <span class="tags">Amor y declaraciones · copla · rima i-o</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CONTACTO ============ -->
 <div class="guarda" aria-hidden="true"></div>
 <section class="contacto" id="contacto">
@@ -531,6 +610,20 @@ var TEXTOS = {
            "His travels in Peru and Chile, where he shared musical encounters with leading figures of criollo music, and his documentary work in northern Argentina have made him at home in many folk styles. He is also a member of Trío Tikismikis, devoted to Argentine folk music."],
   "b-p4": ["« Camino Trunco » (2025), son premier album solo, est entré dans les deux classements internationaux des musiques du monde et a été diffusé par des radios d'une dizaine de pays.",
            "“Camino Trunco” (2025), his first solo album, entered both international world music charts and was played by radio stations in some ten countries."],
+
+  "cp-entrada": ["Un explorateur de coplas traditionnelles, ouvert à tous, pour qui veut les chanter, les enseigner ou simplement les lire.",
+                 "An explorer of traditional coplas, open to everyone, for anyone who wants to sing them, teach them or simply read them."],
+  "cp-p1": ["La copla est la poésie que le peuple chante et se transmet de bouche à oreille : quatre vers qui traversent les siècles et les frontières, de l'Andalousie à Salta, de Veracruz aux Andes. Beaucoup sont restées dans de vieux recueils, difficiles à trouver et à parcourir.",
+            "The copla is the poetry people sing and pass on by word of mouth: four lines that travel across centuries and borders, from Andalusia to Salta, from Veracruz to the Andes. Many were left in old songbooks, hard to find and harder to browse."],
+  "cp-p2": ["Coplario réunit en un seul endroit le travail des folkloristes et des chercheurs qui les ont recueillies et publiées pendant plus d'un siècle et demi. Marco a créé l'outil pour les parcourir : on peut les chercher par mot, rime, pays ou thème, et chaque copla indique sa source, avec la page du livre original à portée de clic.",
+            "Coplario brings together in one place the work of the folklorists and scholars who collected and published them over more than a century and a half. Marco built the tool to explore them: they can be searched by word, rhyme, country or theme, and each copla names its source, with the original book page one click away."],
+  "cp-p3": ["Il l'a pensé comme un outil partagé pour chanteurs, copleros, enseignants et curieux : une façon de rendre à la tradition un peu de ce qu'elle lui a donné.",
+            "He conceived it as a shared tool for singers, copla lovers, teachers and the curious: a way of giving back to the tradition some of what it gave him."],
+  "cp-n1": ["+42 000", "42,000+"],
+  "cp-n2": ["recueils et études", "songbooks and studies"],
+  "cp-n3": ["pays", "countries"],
+  "cp-btn": ["Explorer Coplario ↗", "Explore Coplario ↗"],
+  "cp-nota": ["coplario.com · site en espagnol", "coplario.com · site in Spanish"],
 
   "k-h": ["Contact", "Contact"],
   "k-entrada": ["Pour programmer un concert, demander la fiche technique ou du matériel de presse.", "To book a concert, or to request the tech rider or press material."],
